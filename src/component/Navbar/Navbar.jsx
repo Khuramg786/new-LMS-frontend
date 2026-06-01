@@ -9,6 +9,7 @@ const navItems = [
   { name: "Courses", path: "/courses" },
   { name: "Books", path: "/Books" },
   { name: "Announcement", path: "/AnnouncementPage" },
+  { name: "BusinessBranding", path: "/BusinessBranding" },
   { name: "Blogs", path: "/Blogs" },
   { name: "Contact", path: "/contact" },
 ];
@@ -193,10 +194,10 @@ export default function Navbar() {
         .navLinks {
           display: flex;
           align-items: center;
-          gap: 40px;
+          gap: 30px;
 
           // background: var(--accent-bg);
-          padding: 12px 120px;
+          padding: 12px 50px;
           border-radius: 999px;
           border: 1px solid var(--border);
 

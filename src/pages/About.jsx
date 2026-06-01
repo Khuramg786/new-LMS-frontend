@@ -117,7 +117,7 @@ function About() {
 
           <div className="bg-[#f8fafc] rounded-3xl p-8 text-center shadow-md">
             <Users className="mx-auto text-red-500 mb-4" size={40} />
-            <h3 className="text-4xl font-bold">150+</h3>
+            <h3 className="text-4xl font-bold">5000+</h3>
             <p className="text-gray-500 mt-2">Active Trainees</p>
           </div>
 

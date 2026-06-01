@@ -21,6 +21,7 @@ import UpcomingCourseDetailPage from "../pages/UpcomingCourseDetailPage";
 import AnnouncementPage from "../pages/AnnouncementPage";
 import TermsAndConditions from "../pages/TermsAndConditions";
 import CategoryCourses from "../pages/CategoryCourses";
+import BusinessBranding from "../pages/HomeContent/Businessbranding";
 function AppRoutes() {
   return (
     <Routes>
@@ -45,6 +46,7 @@ function AppRoutes() {
         {/* <Route path="/UpcomingCourseDetailPage" element={<UpcomingCourseDetailPage />} /> */}
         <Route path="/AnnouncementPage" element={<AnnouncementPage />} />
         <Route path="/TermsAndConditions" element={<TermsAndConditions />} />
+        <Route path="/BusinessBranding" element={<BusinessBranding />} />
        <Route
   path="/category/:category"
   element={<CategoryCourses />}
