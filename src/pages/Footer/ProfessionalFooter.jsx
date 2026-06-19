@@ -74,8 +74,10 @@ export default function Footer() {
         <div style={styles.column}>
           <h3 style={styles.heading}>Contact Info</h3>
 
-          <p style={styles.contact}>📞 +92 300 1234567</p>
-          <p style={styles.contact}>📧 info@example.com</p>
+          <p style={styles.contact}>📞  +923000372774
+          </p>
+          <p style={styles.contact}>📧 lifechangersclub2@gmail.com
+</p>
           <p style={styles.contact}>📍 124 Mehboob Garden, Shadab Garden, Lahore, 54000, Pakistan</p>
 
           {/* NEWSLETTER */}

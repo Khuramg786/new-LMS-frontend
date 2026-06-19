@@ -57,12 +57,12 @@ function Contact() {
 
             <div className="flex items-center gap-2 text-sm">
               <Phone size={16} className="text-red-500" />
-              +92 300 9408054
+              +923000372774
             </div>
 
             <div className="flex items-center gap-2 text-sm">
               <Mail size={16} className="text-red-500" />
-              support@company.com
+              lifechangersclub2@gmail.com
             </div>
 
             <div className="flex items-center gap-2 text-sm">
@@ -78,7 +78,7 @@ function Contact() {
 
             <div className="flex gap-4">
 
-              <a href="https://facebook.com" target="_blank">
+              <a href="https://www.facebook.com/yasinshakir123" target="_blank">
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
                   className="w-8 h-8 hover:scale-110 transition cursor-pointer"
@@ -86,7 +86,7 @@ function Contact() {
                 />
               </a>
 
-              <a href="https://instagram.com" target="_blank">
+              <a href="https://www.instagram.com/yasinshakir78/" target="_blank">
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"
                   className="w-8 h-8 hover:scale-110 transition cursor-pointer"
@@ -102,7 +102,7 @@ function Contact() {
                 />
               </a>
 
-              <a href="https://twitter.com" target="_blank">
+              <a href="https://x.com/ShakirYasi7744" target="_blank">
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/733/733579.png"
                   className="w-8 h-8 hover:scale-110 transition cursor-pointer"

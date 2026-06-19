@@ -17,6 +17,8 @@ function UpcomingCourseDetailPage() {
 
   const [openFAQ, setOpenFAQ] = useState(null);
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState(null);
+
 
   const faqs = [
     {
@@ -42,6 +44,7 @@ function UpcomingCourseDetailPage() {
   const [course, setCourse] = useState(null);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     getCourse();
   }, []);
 
@@ -50,7 +53,7 @@ function UpcomingCourseDetailPage() {
       console.log(id);
 
       const res = await axios.get(
-        `https://lms-backend-umup.onrender.com/upcomings/${id}`
+        `http://localhost:5000/upcomings/slug/${id}`
       );
 
       console.log("API Response:", res.data);
@@ -108,22 +111,34 @@ function UpcomingCourseDetailPage() {
 
           {/* RIGHT IMAGE */}
           <div className="relative">
+            {course?.videoUrl ? (
+              <video
+                className="w-full rounded-3xl h-[350px] object-cover"
+                muted
+                autoPlay
+                loop
+                playsInline
+                src={course.videoUrl}
+              />
+            ) : (
+              <img
+                src={course?.imageUrl || "/placeholder.jpg"}
+                className="w-full rounded-3xl h-[350px] object-cover"
+                alt="course"
+              />
+            )}
 
-            <img
-              src={course?.imageUrl}
-              className="w-full rounded-3xl h-[300px] object-cover"
-              alt="course"
-            />
-
+            {/* PLAY BUTTON */}
             <button
-              onClick={() => setIsVideoOpen(true)}
-              className="absolute inset-0 flex items-center justify-center"
+              onClick={() => {
+                setSelectedVideo(course?.videoUrl);
+                setIsVideoOpen(true);
+              }}
+              className="absolute inset-0 flex items-center justify-center bg-black/30 rounded-3xl"
             >
-              <PlayCircle size={60} className="text-white" />
+              <PlayCircle size={70} className="text-white" />
             </button>
-
           </div>
-
         </div>
       </div>
 
@@ -153,13 +168,13 @@ function UpcomingCourseDetailPage() {
 
               <div className="flex justify-between bg-gray-50 p-3 rounded-xl">
                 <span>Time</span>
-               <b>
-  {new Date(`1970-01-01T${course.time}`).toLocaleString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: true,
-  })}
-</b>
+                <b>
+                  {new Date(`1970-01-01T${course.time}`).toLocaleString("en-US", {
+                    hour: "numeric",
+                    minute: "2-digit",
+                    hour12: true,
+                  })}
+                </b>
               </div>
 
               <div className="flex justify-between bg-gray-50 p-3 rounded-xl">
@@ -223,23 +238,33 @@ function UpcomingCourseDetailPage() {
         </div>
 
         {/* RIGHT CARD */}
-      <div className="bg-white p-4 rounded-3xl shadow-xl sticky top-5 self-start">
+        <div className="bg-white p-4 rounded-3xl shadow-xl sticky top-5 self-start">
 
-          <div className="relative mb-5 cursor-pointer" onClick={() => setIsVideoOpen(true)}>
+          <div className="relative mb-5 cursor-pointer" onClick={() => {
+            setSelectedVideo(course?.videoUrl);
+            setIsVideoOpen(true);
+          }}>
 
-            <img
-              src={course?.imageUrl}
-         className="w-full h-40 object-cover rounded-2xl"
-              alt="course"
-            />
+            {course?.videoUrl ? (
+              <video
+                className="w-full h-50 object-cover rounded-2xl"
+                src={course.videoUrl}
+                muted
+              />
+            ) : (
+              <img
+                src={course?.imageUrl || "/placeholder.jpg"}
+                className="w-full h-50 object-cover rounded-2xl"
+                alt="course"
+              />
+            )}
 
             <div className="absolute inset-0 flex items-center justify-center bg-black/30 rounded-2xl">
               <PlayCircle size={50} className="text-white" />
             </div>
-
           </div>
 
-         
+
 
           <p className="text-gray-500 mb-5">
             Upcoming Professional Batch
@@ -266,7 +291,7 @@ function UpcomingCourseDetailPage() {
             Free WhatsApp Chat
           </a>
           {/* COURSE INFO POINTS */}
-        <div className="mt-3 bg-gray-50 p-4 rounded-2xl shadow-sm space-y-2">
+          <div className="mt-3 bg-gray-50 p-4 rounded-2xl shadow-sm space-y-2">
 
             <div className="flex justify-between items-center border-b pb-2">
               <span className="text-gray-600 font-medium">Instructor</span>
@@ -287,7 +312,7 @@ function UpcomingCourseDetailPage() {
             </div>
 
             <div className="flex justify-between items-center border-b pb-2">
-             Lifetime access
+              Lifetime access
               <span className="font-semibold text-gray-900">Full</span>
             </div>
 
@@ -301,90 +326,103 @@ function UpcomingCourseDetailPage() {
         </div>
 
       </div>
-{/* INSTRUCTOR SECTION */}
-<div className="w-full px-4 md:px-8 pb-10">
-  <div className="bg-white rounded-3xl shadow-md border border-gray-100 p-6 md:p-8 hover:shadow-xl transition-all duration-300 max-w-4xl ml-20 md:ml-24">
+      {/* INSTRUCTOR SECTION */}
+      <div className="w-full px-4 md:px-8 pb-10">
+        <div className="bg-white rounded-3xl shadow-md border border-gray-100 p-6 md:p-8 hover:shadow-xl transition-all duration-300 max-w-4xl ml-20 md:ml-24">
 
-    {/* Heading */}
-    <h2 className="text-2xl font-bold mb-6 text-gray-900">
-      Instructor
-    </h2>
+          {/* Heading */}
+          <h2 className="text-2xl font-bold mb-6 text-gray-900">
+            Instructor
+          </h2>
 
-    {/* Name + Role */}
-    <div className="mb-5">
-      <h3 className="text-xl font-bold text-red-600 underline">
-        Yasin Shakir
-      </h3>
-      <p className="text-gray-500 text-sm mt-1">
-        CEO of LifeChangers Club
-      </p>
-    </div>
-
-    {/* Main Content */}
-    <div className="flex flex-col md:flex-row gap-6 items-start">
-
-      {/* IMAGE */}
-      <div className="flex-shrink-0">
-        <img
-         src="https://ik.imagekit.io/b6iqka2sz/best.png?updatedAt=1765137170406"
-          alt="Yasin Shakir"
-          className="w-28 h-28 rounded-full border-4 border-red-500 object-cover shadow-sm"
-        />
-      </div>
-
-      {/* CONTENT */}
-      <div className="flex-1">
-
-        {/* Stats */}
-        <div className="flex flex-wrap gap-3 mb-4 text-sm font-medium text-black">
-          <div className="bg-gray-50 px-3 py-1 rounded-full border border-gray-200">
-            Coach / Trainer
+          {/* Name + Role */}
+          <div className="mb-5">
+            <h3 className="text-xl font-bold text-red-600 underline">
+              Yasin Shakir
+            </h3>
+            <p className="text-gray-500 text-sm mt-1">
+              CEO of LifeChangers Club
+            </p>
           </div>
-          <div className="bg-gray-50 px-3 py-1 rounded-full border border-gray-200">
-            85,200 Reviews
+
+          {/* Main Content */}
+          <div className="flex flex-col md:flex-row gap-6 items-start">
+
+            {/* IMAGE */}
+            <div className="flex-shrink-0">
+              <img
+                src="https://ik.imagekit.io/b6iqka2sz/best.png?updatedAt=1765137170406"
+                alt="Yasin Shakir"
+                className="w-28 h-28 rounded-full border-4 border-red-500 object-cover shadow-sm"
+              />
+            </div>
+
+            {/* CONTENT */}
+            <div className="flex-1">
+
+              {/* Stats */}
+              <div className="flex flex-wrap gap-3 mb-4 text-sm font-medium text-black">
+                <div className="bg-gray-50 px-3 py-1 rounded-full border border-gray-200">
+                  Coach / Trainer
+                </div>
+                <div className="bg-gray-50 px-3 py-1 rounded-full border border-gray-200">
+                  85,200 Reviews
+                </div>
+                <div className="bg-gray-50 px-3 py-1 rounded-full border border-gray-200">
+                  450,123 Trainees
+                </div>
+                <div className="bg-gray-50 px-3 py-1 rounded-full border border-gray-200">
+                  150+ Courses
+                </div>
+              </div>
+
+              {/* Description */}
+              <p className="text-gray-700 text-base leading-7">
+                Yasin Shakir is a seasoned business coach, career development trainer, mental wellness partner & relationship consultant with over 10 years of experience.
+              </p>
+
+            </div>
           </div>
-          <div className="bg-gray-50 px-3 py-1 rounded-full border border-gray-200">
-            450,123 Trainees
-          </div>
-          <div className="bg-gray-50 px-3 py-1 rounded-full border border-gray-200">
-            150+ Courses
-          </div>
+
         </div>
-
-        {/* Description */}
-        <p className="text-gray-700 text-base leading-7">
-         Yasin Shakir is a seasoned business coach, career development trainer, mental wellness partner & relationship consultant with over 10 years of experience.
-        </p>
-
       </div>
-    </div>
-
-  </div>
-</div>
       {/* VIDEO MODAL */}
-      {isVideoOpen && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+    {/* VIDEO MODAL */}
+{isVideoOpen && (
+  <div
+    className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+    onContextMenu={(e) => e.preventDefault()}   // disable right click
+  >
+    <div className="w-full max-w-4xl relative bg-black rounded-2xl overflow-hidden">
 
-          <div className="w-full max-w-4xl relative bg-black rounded-2xl overflow-hidden">
+      {/* CLOSE */}
+      <button
+        onClick={() => setIsVideoOpen(false)}
+        className="absolute top-3 right-3 bg-red-600 text-white px-3 py-1 rounded-full z-10"
+      >
+        ✕
+      </button>
 
-            <button
-              onClick={() => setIsVideoOpen(false)}
-              className="absolute top-3 right-3 bg-red-600 text-white px-3 py-1 rounded-full"
-            >
-              ✕
-            </button>
+      {/* VIDEO PLAYER */}
+      {selectedVideo && (
+        <video
+          className="w-full aspect-video"
+          src={selectedVideo}
+          autoPlay
+          controls
 
-            <iframe
-              className="w-full aspect-video"
-              src="https://www.youtube.com/embed/od_9Wyw_QUc"
-              title="Course Video"
-              allowFullScreen
-            />
+          // 🔥 IMPORTANT: remove download UI
+          controlsList="nodownload noplaybackrate noremoteplayback"
+          disablePictureInPicture
 
-          </div>
-
-        </div>
+          // 🔥 block right click on video itself
+          onContextMenu={(e) => e.preventDefault()}
+        />
       )}
+
+    </div>
+  </div>
+)}
 
     </div>
   );

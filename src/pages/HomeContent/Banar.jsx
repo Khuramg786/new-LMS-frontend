@@ -1,29 +1,31 @@
 import { useEffect, useState } from "react";
 
 const slides = [
-  { image: "https://yselti.pk/images/business.webp" },
-  { image: "https://yselti.pk/images/business.webp" },
-  { image: "https://yselti.pk/images/business.webp" },
+  { image: "https://ik.imagekit.io/b6iqka2sz/Team%20mangment%20tema%20.jpg" },
+  { image: "https://ik.imagekit.io/b6iqka2sz/bussines%20groth%20club%20best%20.jpg" },
 ];
 
 const logos = [
-  "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
-  "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
-  "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg",
-  "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
-  "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
+  "https://ik.imagekit.io/b6iqka2sz/newhand%20.png",
+  "https://ik.imagekit.io/b6iqka2sz/logo-1.jpg",
+  "https://ik.imagekit.io/b6iqka2sz/Screenshot%202026-06-06%20141421.png",
+  "https://ik.imagekit.io/b6iqka2sz/nesgasga.png",
+  "https://ik.imagekit.io/b6iqka2sz/newhand%20.png",
+  "https://ik.imagekit.io/b6iqka2sz/299867451_157170886956277_5270323847173662017_n.png",
+  "https://ik.imagekit.io/b6iqka2sz/l.png",
+  "https://ik.imagekit.io/b6iqka2sz/302112017_448111447355075_1730860603452584329_n-removebg-preview.png",
 ];
 
 export default function Banar() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const timer = setTimeout(() => {
       setIndex((prev) => (prev + 1) % slides.length);
-    }, 3000);
+    }, 40000);
 
-    return () => clearInterval(timer);
-  }, []);
+    return () => clearTimeout(timer);
+  }, [index]);
 
   return (
     <div>
@@ -60,12 +62,12 @@ export default function Banar() {
         </div>
       </div>
 
-      {/* CSS */}
       <style>{`
+        /* BANNER */
         .bannerWrapper {
+          width: 100%;
           height: 60vh;
           position: relative;
-          // margin-top: -70px;
           overflow: hidden;
         }
 
@@ -80,18 +82,18 @@ export default function Banar() {
           inset: 0;
           width: 100%;
           height: 100%;
-          background-size: cover;
+          background-size: 100% 100%; /* FULL WIDTH + HEIGHT */
           background-position: center;
+          background-repeat: no-repeat;
           opacity: 0;
-          transition: all 1s ease;
-          transform: scale(1.05);
+          transition: opacity 1.5s ease-in-out;
         }
 
         .slide.active {
           opacity: 1;
-          transform: scale(1);
         }
 
+        /* DOTS */
         .dots {
           position: absolute;
           bottom: 15px;
@@ -99,6 +101,7 @@ export default function Banar() {
           display: flex;
           justify-content: center;
           gap: 8px;
+          z-index: 2;
         }
 
         .dot {
@@ -107,6 +110,7 @@ export default function Banar() {
           background: #ccc;
           border-radius: 50%;
           cursor: pointer;
+          transition: all 0.3s ease;
         }
 
         .activeDot {
@@ -134,7 +138,6 @@ export default function Banar() {
           height: 50px;
           width: auto;
           object-fit: contain;
-          filter: none; /* original color */
         }
 
         @keyframes scroll {
@@ -146,15 +149,17 @@ export default function Banar() {
           }
         }
 
+        /* TABLET */
+        @media (max-width: 992px) {
+          .bannerWrapper {
+            height: 40vh;
+          }
+        }
+
         /* MOBILE */
         @media (max-width: 768px) {
           .bannerWrapper {
-            height: 20vh;
-            margin-top: -20px;
-          }
-
-          .slide {
-            transform: scale(1);
+            height: 30vh;
           }
 
           .logo {
@@ -163,6 +168,17 @@ export default function Banar() {
 
           .logoTrack {
             gap: 30px;
+          }
+        }
+
+        /* SMALL MOBILE */
+        @media (max-width: 480px) {
+          .bannerWrapper {
+            height: 25vh;
+          }
+
+          .logo {
+            height: 30px;
           }
         }
       `}</style>

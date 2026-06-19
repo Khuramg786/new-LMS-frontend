@@ -17,7 +17,7 @@ export default function Upcomingcourese() {
   const fetchCourses = async () => {
     try {
       const res = await fetch(
-        "https://lms-backend-umup.onrender.com/upcomings/getUpcoming"
+        "http://localhost:5000/upcomings/getUpcoming"
       );
 
       const data = await res.json();
@@ -49,19 +49,7 @@ export default function Upcomingcourese() {
   useEffect(() => {
     fetchCourses();
   }, []);
-  // AUTO SLIDE
-  useEffect(() => {
-    const slider = setInterval(() => {
-      setIndex((prev) => {
-        if (prev >= courses.length - cardsPerView) {
-          return 0;
-        }
-        return prev + 1;
-      });
-    }, 3000);
 
-    return () => clearInterval(slider);
-  }, [courses.length]);
 
   return (
     <div className="courses-section">
@@ -103,12 +91,46 @@ export default function Upcomingcourese() {
 
                 {/* IMAGE */}
                 <div className="image-box">
-                  <img src={course.imageUrl} alt={course.title} />
+                  <div className="video-thumb">
+                    {course.videoUrl &&
+                      (course.videoUrl.includes("youtube.com") ||
+                        course.videoUrl.includes("youtu.be")) ? (
 
+                      <iframe
+                        width="100%"
+                        height="220"
+                        src={`https://www.youtube.com/embed/${course.videoUrl.includes("youtu.be/")
+                          ? course.videoUrl.split("youtu.be/")[1]?.split("?")[0]
+                          : course.videoUrl.split("v=")[1]?.split("&")[0]
+                          }`}
+                        title="YouTube Video"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+
+                    ) : course.videoUrl ? (
+
+                      <video
+                        width="100%"
+                        height="220"
+                        controls
+                        controlsList="nodownload noplaybackrate"
+                        disablePictureInPicture
+                        onContextMenu={(e) => e.preventDefault()}
+                      >
+                        <source src={course.videoUrl} />
+                      </video>
+
+                    ) : (
+                      <div style={{ height: "220px", background: "#ddd" }} />
+                    )}
+                  </div>
+                  {/* 
                   <div className="upcoming-badge">
                     <Clock3 size={14} />
                     Upcoming
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* CONTENT */}
@@ -134,7 +156,7 @@ export default function Upcomingcourese() {
                       {course.studentenroll} enrolled
                     </div>
 
-                    <Link to={`/upcoming-course/${course._id}`}>
+                    <Link to={`/upcoming-course/${course.slug}`}>
 
                       View Details →
                     </Link>
@@ -239,16 +261,16 @@ export default function Upcomingcourese() {
 
         .upcoming-badge{
           position:absolute;
-          top:18px;
-          right:18px;
+          top:3px;
+          left:10px;
           background:linear-gradient(90deg,#ef4444,#dc2626);
           color:#fff;
-          padding:8px 16px;
+          padding:4px 10px;
           border-radius:50px;
           display:flex;
           align-items:center;
           gap:6px;
-          font-size:14px;
+          font-size:10px;
           font-weight:700;
         }
 
@@ -257,14 +279,23 @@ export default function Upcomingcourese() {
         .content{
           padding:24px;
         }
+.content h2{
+  color:#111827;
+  margin-bottom:20px;
 
-        .content h2{
-          font-size:22px;
-          line-height:1.4;
-          color:#111827;
-          margin-bottom:20px;
-          min-height:95px;
-        }
+  /* 🔥 IMPORTANT: allow wrap but controlled */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+
+  /* 🔥 auto responsive font */
+  font-size: clamp(12px, 1.4vw, 20px);
+
+  line-height: 1.2;
+
+  /* clean */
+  overflow: hidden;
+}
 
         .info-row{
           display:flex;
@@ -378,9 +409,6 @@ export default function Upcomingcourese() {
             font-size:16px;
           }
 
-          .content h2{
-            font-size:20px;
-          }
               .nav-btn{
     width:36px;
     height:36px;
@@ -410,9 +438,7 @@ export default function Upcomingcourese() {
     font-size:14px;
   }
 
-  .content h2{
-    font-size:16px;
-  }
+ 
 
   .nav-btn svg{
     width:18px;

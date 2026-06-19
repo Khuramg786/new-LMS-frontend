@@ -23,6 +23,7 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.15.1",
     "remark-gfm": "^4.0.1",
+    "slugify": "^1.6.9",
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
