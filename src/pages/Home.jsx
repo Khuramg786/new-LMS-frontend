@@ -7,7 +7,10 @@ import Upcomingcourese from "./HomeContent/Upcomingcourese";
 import PromoBanner from "./HomeContent/PromoBanner";
 import Secondpromobannaer from "./HomeContent/Secondpromobannaer";
 import TestimonialVideoSection from "./HomeContent/TestimonialVideoSection";
-import addPostImg from '../assets/add_post.jpg';
+
+// 🛠️ FIXED PATH: '../' ki jagah '../../' kiya hai taake build ke waqt Vite is image ko index kar sake
+import addPostImg from '../../assets/add_post.jpg';
+
 function Home() {
   const [showAds, setShowAds] = useState(true);
   const [timeLeft, setTimeLeft] = useState(20);
@@ -87,7 +90,7 @@ function Home() {
           position: fixed;
           right: 24px;
           top: 350px; 
-          width: 300px; /* 👈 Width ko barha kar 300px kar diya hai */
+          width: 300px; 
           background: #ffffff;
           border-radius: 14px;
           box-shadow: rgba(0, 0, 0, 0.12) 0px 10px 30px 0px, 
@@ -152,7 +155,6 @@ function Home() {
           border: 1px solid #f1f5f9;
         }
 
-        /* 🛠️ Height kam kar ke 180px kar di hai taake wide look aaye */
         .ad-box.tall-banner img {
           width: 100%;
           height: 180px; 
@@ -180,7 +182,7 @@ function Home() {
           z-index: 10;
         }
 
-        @media (max-width: 1200px) { /* Screen size responsive adjustment */
+        @media (max-width: 1200px) { 
           .right-ads-container {
             display: none;
           }
