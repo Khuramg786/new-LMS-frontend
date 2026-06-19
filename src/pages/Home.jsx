@@ -9,7 +9,7 @@ import Secondpromobannaer from "./HomeContent/Secondpromobannaer";
 import TestimonialVideoSection from "./HomeContent/TestimonialVideoSection";
 
 // 🛠️ FIXED PATH: '../' ki jagah '../../' kiya hai taake build ke waqt Vite is image ko index kar sake
-import addPostImg from '../../assets/add_post.jpg';
+import addPostImg from '../../public/add_post.jpg';
 
 function Home() {
   const [showAds, setShowAds] = useState(true);
