@@ -8,8 +8,6 @@ import PromoBanner from "./HomeContent/PromoBanner";
 import Secondpromobannaer from "./HomeContent/Secondpromobannaer";
 import TestimonialVideoSection from "./HomeContent/TestimonialVideoSection";
 
-// ⚠️ NOTE: public folder se image ko upar import karne wali line yahan se delete kar di hai.
-
 function Home() {
   const [showAds, setShowAds] = useState(true);
   const [timeLeft, setTimeLeft] = useState(20);
@@ -18,20 +16,18 @@ function Home() {
     let countdownInterval;
 
     if (showAds) {
-      // 20 seconds display countdown
       setTimeLeft(20);
       countdownInterval = setInterval(() => {
         setTimeLeft((prev) => {
           if (prev <= 1) {
             clearInterval(countdownInterval);
-            setShowAds(false); // Smooth exit trigger
+            setShowAds(false); 
             return 0;
           }
           return prev - 1;
         });
       }, 1000);
     } else {
-      // 5 Seconds break time ke baad automatic fir se show hoga
       const breakTimer = setTimeout(() => {
         setShowAds(true);
       }, 5000); 
@@ -56,28 +52,28 @@ function Home() {
         {showAds && (
           <motion.div
             className="right-ads-container"
-            initial={{ x: 400, opacity: 0 }} 
+            initial={{ x: 200, opacity: 0 }} 
             animate={{ x: 0, opacity: 1 }}   
-            exit={{ x: 400, opacity: 0 }}    
-            transition={{ type: "spring", stiffness: 80, damping: 15 }}
+            exit={{ x: 200, opacity: 0 }}    
+            transition={{ type: "spring", stiffness: 100, damping: 15 }}
           >
-            {/* Header (Agar aap un-comment karna chahein) */}
-            {/* <div className="ads-header">
-              <span className="ad-timer">Ads closing in: <strong>{timeLeft}s</strong></span>
+            <div className="ads-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span className="ad-timer">Closing in: <strong>{timeLeft}s</strong></span>
               <button className="ad-close-btn" onClick={() => setShowAds(false)}>
                 <X size={14} />
               </button>
-            </div> */}
+            </div>
 
             <div className="ads-body">
-              {/* Banner Image */}
               <div className="ad-box tall-banner">
-                {/* 🛠️ FIXED FOR LIVE & LOCAL: Direct public root path use kiya hai */}
-                {/* <img 
+                {/* Text aur Image dono active hain taake pakka pata chale */}
+                <h3 style={{ fontSize: "14px", margin: "5px 0", color: "#333", textAlign: "center" }}>
+                  Premium Advertisement
+                </h3>
+                <img 
                   src="/add_post.jpg" 
                   alt="Premium Business Course Advertisement" 
-                /> */}
-                <h1>adkalsjdlkfasthehalkjsdflasdlf jlaksdf </h1>
+                />
               </div>
             </div>
           </motion.div>
@@ -89,14 +85,14 @@ function Home() {
         .right-ads-container {
           position: fixed;
           right: 24px;
-          top: 350px; 
-          width: 300px; 
+          top: 250px; 
+          width: 280px; 
           background: #ffffff;
           border-radius: 14px;
-          box-shadow: rgba(0, 0, 0, 0.12) 0px 10px 30px 0px, 
-                      rgba(0, 0, 0, 0.04) 0px 0px 0px 1px;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, 
+                      rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
           padding: 12px;
-          z-index: 999;
+          z-index: 99999; /* Z-Index barha diya taake live par koi cheez iske upar na aaye */
           display: flex;
           flex-direction: column;
           gap: 10px;
@@ -133,12 +129,6 @@ function Home() {
           justify-content: center;
           cursor: pointer;
           color: #64748b;
-          transition: background 0.2s;
-        }
-
-        .ad-close-btn:hover {
-          background: #e2e8f0;
-          color: #0f172a;
         }
 
         .ads-body {
@@ -151,8 +141,6 @@ function Home() {
           width: 100%;
           border-radius: 8px;
           overflow: hidden;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-          border: 1px solid #f1f5f9;
         }
 
         .ad-box.tall-banner img {
@@ -160,33 +148,9 @@ function Home() {
           height: 180px; 
           object-fit: cover;
           display: block;
-          transition: transform 0.3s;
         }
 
-        .ad-box img:hover {
-          transform: scale(1.02);
-        }
-
-        .ad-tag {
-          position: absolute;
-          top: 8px;
-          left: 8px;
-          background: rgba(0, 0, 0, 0.75);
-          color: #ffffff;
-          font-size: 9px;
-          font-family: system-ui, sans-serif;
-          font-weight: 600;
-          padding: 3px 8px;
-          border-radius: 4px;
-          letter-spacing: 0.5px;
-          z-index: 10;
-        }
-
-        @media (max-width: 1200px) { 
-          .right-ads-container {
-            display: none;
-          }
-        }
+        /* 🛠️ TESTING KE LIYE DISPLAY NONE WALA CODE DELETE KAR DIYA HAI */
       `}</style>
     </div>
   );
