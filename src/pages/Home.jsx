@@ -57,23 +57,19 @@ function Home() {
             exit={{ x: 200, opacity: 0 }}    
             transition={{ type: "spring", stiffness: 100, damping: 15 }}
           >
-            <div className="ads-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              <span className="ad-timer">Closing in: <strong>{timeLeft}s</strong></span>
+            <div className="ads-header">
+              <span className="ad-timer">Ads closing in: <strong>{timeLeft}s</strong></span>
               <button className="ad-close-btn" onClick={() => setShowAds(false)}>
                 <X size={14} />
               </button>
             </div>
 
             <div className="ads-body">
-              <div className="ad-box tall-banner">
-                {/* Text aur Image dono active hain taake pakka pata chale */}
-                <h3 style={{ fontSize: "14px", margin: "5px 0", color: "#333", textAlign: "center" }}>
-                  Premium Advertisement
-                </h3>
-                <img 
-                  src="/add_post.jpg" 
-                  alt="Premium Business Course Advertisement" 
-                />
+              {/* 🛠️ TESTING TEXT BOX: Image ko hata kar direct bright styling di hai */}
+              <div className="ad-text-test-box">
+                <h2>📢 BIG OFFER!</h2>
+                <p>Premium Business Course is now live. Join Life Changers Club today!</p>
+                <span className="ad-click-btn">Learn More</span>
               </div>
             </div>
           </motion.div>
@@ -92,7 +88,7 @@ function Home() {
           box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, 
                       rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
           padding: 12px;
-          z-index: 99999; /* Z-Index barha diya taake live par koi cheez iske upar na aaye */
+          z-index: 999999; /* Bohot high z-index taake har cheez ke upar dikhe */
           display: flex;
           flex-direction: column;
           gap: 10px;
@@ -136,21 +132,38 @@ function Home() {
           flex-direction: column;
         }
 
-        .ad-box {
-          position: relative;
-          width: 100%;
+        /* 🛠️ STYLING FOR TESTING TEXT BOX */
+        .ad-text-test-box {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 20px;
           border-radius: 8px;
-          overflow: hidden;
+          text-align: center;
+          font-family: system-ui, sans-serif;
         }
 
-        .ad-box.tall-banner img {
-          width: 100%;
-          height: 180px; 
-          object-fit: cover;
-          display: block;
+        .ad-text-test-box h2 {
+          margin: 0 0 10px 0;
+          font-size: 20px;
         }
 
-        /* 🛠️ TESTING KE LIYE DISPLAY NONE WALA CODE DELETE KAR DIYA HAI */
+        .ad-text-test-box p {
+          font-size: 13px;
+          line-height: 1.4;
+          margin: 0 0 15px 0;
+          opacity: 0.9;
+        }
+
+        .ad-click-btn {
+          display: inline-block;
+          background: white;
+          color: #764ba2;
+          padding: 6px 16px;
+          font-size: 12px;
+          font-weight: bold;
+          border-radius: 20px;
+          text-transform: uppercase;
+        }
       `}</style>
     </div>
   );
