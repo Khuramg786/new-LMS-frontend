@@ -8,8 +8,7 @@ import PromoBanner from "./HomeContent/PromoBanner";
 import Secondpromobannaer from "./HomeContent/Secondpromobannaer";
 import TestimonialVideoSection from "./HomeContent/TestimonialVideoSection";
 
-// 🛠️ FIXED PATH: '../' ki jagah '../../' kiya hai taake build ke waqt Vite is image ko index kar sake
-import addPostImg from '../../public/add_post.jpg';
+// ⚠️ NOTE: public folder se image ko upar import karne wali line yahan se delete kar di hai.
 
 function Home() {
   const [showAds, setShowAds] = useState(true);
@@ -73,9 +72,9 @@ function Home() {
             <div className="ads-body">
               {/* Banner Image */}
               <div className="ad-box tall-banner">
-                {/* <span className="ad-tag">Sponsored Offer</span> */}
+                {/* 🛠️ FIXED FOR LIVE & LOCAL: Direct public root path use kiya hai */}
                 <img 
-                  src={addPostImg} 
+                  src="/add_post.jpg" 
                   alt="Premium Business Course Advertisement" 
                 />
               </div>
