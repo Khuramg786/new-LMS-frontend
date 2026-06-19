@@ -73,11 +73,10 @@ function Home() {
               {/* Banner Image */}
               <div className="ad-box tall-banner">
                 {/* 🛠️ FIXED FOR LIVE & LOCAL: Direct public root path use kiya hai */}
-                {/* <img 
+                <img 
                   src="/add_post.jpg" 
                   alt="Premium Business Course Advertisement" 
-                /> */}
-                <h1>akldsjflkjaklsdfkkadlsjf</h1>
+                />
               </div>
             </div>
           </motion.div>
