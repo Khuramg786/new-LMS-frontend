@@ -157,7 +157,7 @@ function Courses() {
         const fetchCourses = async () => {
             setLoading(true);
             try {
-                const res = await fetch("http://localhost:5000/course/getcourse");
+                const res = await fetch("https://new.lifechangersclub.pk/course/getcourse");
                 const data = await res.json();
                 const allCourses = data.courses || [];
 

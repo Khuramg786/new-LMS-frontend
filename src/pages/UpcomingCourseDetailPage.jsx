@@ -53,7 +53,7 @@ function UpcomingCourseDetailPage() {
       console.log(id);
 
       const res = await axios.get(
-        `http://localhost:5000/upcomings/slug/${id}`
+        `https://new.lifechangersclub.pk/upcomings/slug/${id}`
       );
 
       console.log("API Response:", res.data);

@@ -55,11 +55,9 @@ export default function Navbar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Native HTML5 validation will trigger first, but ensuring all fields are filled
     if (formData.fullName && formData.businessJob && formData.city && formData.whatsapp && formData.category) {
       setIsModalOpen(false);
       setShowSuccess(true);
-      // Reset Form Fields
       setFormData({
         fullName: "",
         businessJob: "",
@@ -91,16 +89,12 @@ export default function Navbar() {
 
           {/* Right: Contact Info */}
           <div className="topbar-right">
-            <a href="mailto:lifechangersclub2@gmail.com
-" className="topbar-link">
+            <a href="mailto:lifechangersclub2@gmail.com" className="topbar-link">
               <Mail size={14} /> lifechangersclub2@gmail.com
-
             </a>
             <span className="separator">|</span>
-            <a href="https://wa.me/923000372774
-" target="_blank" rel="noopener noreferrer" className="topbar-link whatsapp">
+            <a href="https://wa.me/923000372774" target="_blank" rel="noopener noreferrer" className="topbar-link whatsapp">
               <Phone size={14} /> +923000372774
-
             </a>
           </div>
         </div>
@@ -340,7 +334,6 @@ export default function Navbar() {
           border-radius: 4px;
         }
 
-        /* ZOOM IN / OUT PULSE ANIMATION FOR OFFER */
         .animated-offer {
           font-weight: 700;
           cursor: pointer;
@@ -382,7 +375,7 @@ export default function Navbar() {
           color: rgba(255, 255, 255, 0.3);
         }
 
-        /* NAVBAR ACCUMODATION */
+        /* NAVBAR FIXED POSITION RE-CONFIGURED */
         .navbar {
           position: fixed;
           top: 40px;   
@@ -397,7 +390,6 @@ export default function Navbar() {
           box-sizing: border-box;
           background: var(--bg);
           border-bottom: none;
-          overflow: hidden;
           border-radius: 0 0 12px 12px;
           box-shadow: var(--shadow);
           z-index: 1000; 
@@ -434,7 +426,6 @@ export default function Navbar() {
           border-radius: 999px;
           border: 1px solid var(--border);
           max-width: 60%;
-          overflow: hidden;
         }
 
         .navItem {
@@ -538,6 +529,7 @@ export default function Navbar() {
           border-bottom: 1px solid #edf2f7;
           padding-bottom: 12px;
           margin-bottom: 16px;
+          box-sizing: border-box;
         }
 
         .modal-header h3 {
@@ -628,11 +620,11 @@ export default function Navbar() {
 
         /* RESPONSIVE MEDIA QUERIES */
         @media (max-width: 900px) {
-          .topbar { height: auto; padding: 5px 0; }
+          .topbar { height: auto; padding: 5px 0; position: fixed; }
           .topbar-inner { flex-direction: column; padding: 0 15px; gap: 4px; text-align: center; }
           .topbar-left, .topbar-right { display: none; }
-          .navbar { height: 55px; left: 10px; right: 10px; top: 35px; border-radius: 10px; padding: 0 12px; }
-          .logo img { width: 30px; height: 35px; }
+          .navbar { height: 55px; left: 10px; right: 10px; top: 35px; border-radius: 10px; padding: 0 12px; position: fixed; }
+          .logo img { width: 80px; height: 35px; } /* Fixed logo rendering */
           .navLinks, .auth { display: none; }
           .mobileIcon { display: block; }
           .mobileMenu { top: 90px; height: calc(100vh - 90px); }

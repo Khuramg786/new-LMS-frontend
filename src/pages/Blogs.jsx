@@ -22,7 +22,7 @@ function Blogs() {
     const fetchBlogs = async () => {
       try {
         setIsLoading(true);
-        const res = await fetch("http://localhost:5000/blog/getblogs");
+        const res = await fetch("https://new.lifechangersclub.pk/blog/getblogs");
         const data = await res.json();
         setBlogs(data.blogs || []);
       } catch (error) {

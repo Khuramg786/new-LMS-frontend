@@ -18,7 +18,7 @@ function BlogDetail() {
         console.log("Fetching details for identifier:", blogIdentifier);
         
         // Step 1: Pehle direct slug endpoint ko try karein
-        const res = await fetch(`http://localhost:5000/blog/slug/${blogIdentifier}`);
+        const res = await fetch(`https://new.lifechangersclub.pk/blog/slug/${blogIdentifier}`);
         const data = await res.json();
         
         if (data && (data.success || data.blog) && data.blog) {
@@ -29,7 +29,7 @@ function BlogDetail() {
         // Step 2: FALLBACK BACKUP LOGIC (Agar backend slug route complete nahi hai)
         // Hum pure blogs fetch karke client-side par generate hone wale slug se match karenge
         console.log("Slug endpoint did not return blog. Trying fallback matching system...");
-        const allBlogsRes = await fetch("http://localhost:5000/blog/getblogs");
+        const allBlogsRes = await fetch("https://new.lifechangersclub.pk/blog/getblogs");
         const allBlogsData = await allBlogsRes.json();
         
         if (allBlogsData && allBlogsData.blogs) {

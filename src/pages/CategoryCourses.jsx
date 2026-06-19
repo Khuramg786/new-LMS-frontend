@@ -17,7 +17,7 @@ function CategoryCourses() {
     const slug = decodeURIComponent(category);
     console.log("URL SLUG:", slug);
 
-    fetch(`http://localhost:5000/course/coursebycategory/${slug}`)
+    fetch(`https://new.lifechangersclub.pk/course/coursebycategory/${slug}`)
       .then((res) => res.json())
       .then((data) => {
         console.log("API RESPONSE:", data);

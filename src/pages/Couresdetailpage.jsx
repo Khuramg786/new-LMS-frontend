@@ -57,7 +57,7 @@ function CourseDetailPage() {
         if (!course) {
             const fetchCourse = async () => {
                 try {
-                    const res = await fetch(`http://localhost:5000/course/slug/${slug}`);
+                    const res = await fetch(`https://new.lifechangersclub.pk/course/slug/${slug}`);
                     const data = await res.json();
                     if (data.success) {
                         setCourse(data.course);

@@ -17,7 +17,7 @@ export default function Upcomingcourese() {
   const fetchCourses = async () => {
     try {
       const res = await fetch(
-        "http://localhost:5000/upcomings/getUpcoming"
+        "https://new.lifechangersclub.pk/upcomings/getUpcoming"
       );
 
       const data = await res.json();

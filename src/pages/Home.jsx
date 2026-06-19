@@ -7,7 +7,7 @@ import Upcomingcourese from "./HomeContent/Upcomingcourese";
 import PromoBanner from "./HomeContent/PromoBanner";
 import Secondpromobannaer from "./HomeContent/Secondpromobannaer";
 import TestimonialVideoSection from "./HomeContent/TestimonialVideoSection";
-
+import addPostImg from '../assets/add_post.jpg';
 function Home() {
   const [showAds, setShowAds] = useState(true);
   const [timeLeft, setTimeLeft] = useState(20);
@@ -49,7 +49,7 @@ function Home() {
       <PromoBanner />
       <TestimonialVideoSection />
 
-      {/* ================= RIGHT SIDE SINGLE TALL AD SYSTEM ================= */}
+      {/* ================= RIGHT SIDE SINGLE WIDE AD SYSTEM ================= */}
       <AnimatePresence>
         {showAds && (
           <motion.div
@@ -59,21 +59,21 @@ function Home() {
             exit={{ x: 400, opacity: 0 }}    
             transition={{ type: "spring", stiffness: 80, damping: 15 }}
           >
-            {/* Header */}
-            <div className="ads-header">
+            {/* Header (Agar aap un-comment karna chahein) */}
+            {/* <div className="ads-header">
               <span className="ad-timer">Ads closing in: <strong>{timeLeft}s</strong></span>
               <button className="ad-close-btn" onClick={() => setShowAds(false)}>
                 <X size={14} />
               </button>
-            </div>
+            </div> */}
 
             <div className="ads-body">
-              {/* Only 1 Tall Advertisement Banner */}
+              {/* Banner Image */}
               <div className="ad-box tall-banner">
-                <span className="ad-tag">Sponsored Offer</span>
+                {/* <span className="ad-tag">Sponsored Offer</span> */}
                 <img 
-                  src="https://ik.imagekit.io/5gxvf7tmy/db80589e-7b51-4d17-bac4-0499ea6fd79b.jpg" 
-                  alt="Premium Tall Business Course Advertisement" 
+                  src={addPostImg} 
+                  alt="Premium Business Course Advertisement" 
                 />
               </div>
             </div>
@@ -86,8 +86,8 @@ function Home() {
         .right-ads-container {
           position: fixed;
           right: 24px;
-          top: 220px; 
-          width: 260px;
+          top: 350px; 
+          width: 300px; /* 👈 Width ko barha kar 300px kar diya hai */
           background: #ffffff;
           border-radius: 14px;
           box-shadow: rgba(0, 0, 0, 0.12) 0px 10px 30px 0px, 
@@ -152,10 +152,10 @@ function Home() {
           border: 1px solid #f1f5f9;
         }
 
-        /* 👈 Height ko barha kar standard website ad size de diya gaya hai */
+        /* 🛠️ Height kam kar ke 180px kar di hai taake wide look aaye */
         .ad-box.tall-banner img {
           width: 100%;
-          height: 340px; 
+          height: 180px; 
           object-fit: cover;
           display: block;
           transition: transform 0.3s;
@@ -180,7 +180,7 @@ function Home() {
           z-index: 10;
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 1200px) { /* Screen size responsive adjustment */
           .right-ads-container {
             display: none;
           }

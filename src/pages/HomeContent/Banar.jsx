@@ -29,8 +29,11 @@ export default function Banar() {
 
   return (
     <div>
-      {/* BANNER */}
-      <div className="bannerWrapper">
+      {/* BANNER CONTAINER 
+        - mt-20 md:mt-24 sa fixed navbar ki space clear hogi.
+        - pt-4 md:pt-6 sa navbar ke foran baad thori extra padding space milegi taake banner thoda niche push ho kar khula khula dikhe.
+      */}
+     <div className="bannerWrapper mt-32 md:mt-40 pt-8 md:pt-12" style={{ marginTop:"2%"}}>
         <div className="banner">
           {slides.map((slide, i) => (
             <div
@@ -69,6 +72,7 @@ export default function Banar() {
           height: 60vh;
           position: relative;
           overflow: hidden;
+          box-sizing: border-box;
         }
 
         .banner {
