@@ -144,7 +144,18 @@ function Home() {
 
         .ad-text-test-box h2 {
           margin: 0 0 10px 0;
+          font-size: 20px;
+        }
 
+        .ad-text-test-box p {
+          font-size: 13px;
+          line-height: 1.4;
+          margin: 0 0 15px 0;
+          opacity: 0.9;
+        }
+
+        .ad-click-btn {
+          display: inline-block;
           background: white;
           color: #764ba2;
           padding: 6px 16px;
