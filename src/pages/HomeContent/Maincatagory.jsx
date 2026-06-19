@@ -14,7 +14,7 @@ const categories = [
         ],
     },
     {
-        title: "Team Management Skills",
+        title: "Team Management Skills Club",
         color: "#7c3aed",
         total: "18 Courses",
         items: [

@@ -88,11 +88,11 @@ const Stars = ({ rating }) => {
 };
 
 const dynamicTrainers = [
-    { name: "Yasin Sakir", profile: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100" },
-    { name: "Yasin Sakir", profile: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100" },
-    { name: "Yasin Sakir", profile: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?q=80&w=100" },
-    { name: "Yasin Sakir", profile: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100" },
-    { name: "Yasin Sakir", profile: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=100" }
+    { name: "Yasin Sakir", profile: "https://ik.imagekit.io/b6iqka2sz/best.png?updatedAt=1765137170406" },
+    { name: "Yasin Sakir", profile: "https://ik.imagekit.io/b6iqka2sz/best.png?updatedAt=17651371704060" },
+    { name: "Yasin Sakir", profile: "https://ik.imagekit.io/b6iqka2sz/best.png?updatedAt=1765137170406" },
+    { name: "Yasin Sakir", profile: "https://ik.imagekit.io/b6iqka2sz/best.png?updatedAt=1765137170406" },
+    { name: "Yasin Sakir", profile: "https://ik.imagekit.io/b6iqka2sz/best.png?updatedAt=1765137170406" }
 ];
 
 /* ---------------- SKELETON LOADER CARD COMPONENT ---------------- */
