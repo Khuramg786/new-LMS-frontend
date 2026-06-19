@@ -184,7 +184,7 @@ function Home() {
         @media (max-width: 1200px) { 
           .right-ads-container {
             display: none;
-          }.....
+          }
         }
       `}</style>
     </div>
